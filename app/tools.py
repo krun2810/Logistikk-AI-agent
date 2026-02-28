@@ -7,7 +7,7 @@ def categorize_by_keywords(text: str) -> str:
 
     if any(kw in lower for kw in ["pakke", "sporing", "tracking", "track"]):
         return "pakke_sporing"
-    if any(kw in lower for kw in ["klage", "misfornøyd", "fornøyd", "problem"]):
+    if any(kw in lower for kw in ["klage", "misfornøyd", "problem"]):
         return "klage"
     if any(kw in lower for kw in ["adresse", "endre", "flytte"]):
         return "adresse_endring"

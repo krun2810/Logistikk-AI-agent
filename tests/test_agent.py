@@ -8,7 +8,7 @@ def test_categorize_tracking() -> None:
 
 def test_categorize_complaint() -> None:
     assert categorize_by_keywords("Jeg vil klage på leveransen") == "klage"
-    assert categorize_by_keywords("Jeg er ikke fornøyd med servicen") == "klage"
+    assert categorize_by_keywords("Jeg er misfornøyd med servicen") == "klage"
 
 
 def test_categorize_address_change() -> None:

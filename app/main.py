@@ -12,6 +12,12 @@ from app.models import HealthResponse, InquiryRequest, InquiryResponse
 
 VERSION = "1.0.0"
 
+_ALLOWED_ORIGINS = [
+    o.strip()
+    for o in os.getenv("ALLOWED_ORIGINS", "").split(",")
+    if o.strip()
+] or ["*"]
+
 
 @asynccontextmanager
 async def lifespan(app: FastAPI) -> AsyncGenerator[None, None]:
@@ -26,7 +32,7 @@ app = FastAPI(title="Logistikk AI-Agent", version=VERSION, lifespan=lifespan)
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=_ALLOWED_ORIGINS,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
